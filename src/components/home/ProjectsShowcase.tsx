@@ -62,15 +62,15 @@ export default function ProjectsShowcase() {
    * Desktop:
    * Vertical page scrolling controls horizontal movement.
    */
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-55%"]);
+  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-65%"]);
 
   return (
     <section
       ref={sectionRef}
-      className="relative bg-[var(--background)] text-[var(--foreground)] lg:h-[400vh]"
+      className="relative bg-[var(--background)] text-[var(--foreground)] lg:h-[450vh]"
     >
       {/* Desktop sticky container */}
-      <div className="mt-24 lg:sticky lg:top-0 lg:flex lg:h-screen lg:flex-col lg:justify-center lg:overflow-hidden">
+      <div className="lg:sticky lg:top-0 lg:flex lg:h-screen lg:flex-col lg:justify-center lg:overflow-hidden">
         {/* Header */}
         <div className="px-6 pb-10 md:px-10 lg:px-14 lg:pb-12">
           <div className="mx-auto flex max-w-[1500px] items-end justify-between">
@@ -80,7 +80,7 @@ export default function ProjectsShowcase() {
               viewport={{ once: true, amount: 0.8 }}
               transition={{ duration: 0.8 }}
             >
-              <div className="flex items-center gap-4">
+              <div className=" mt-24 flex items-center gap-4">
                 <span className="h-px w-10 bg-[var(--foreground)]/30" />
 
                 <span className="text-xs font-medium uppercase tracking-[0.3em] text-[var(--muted)]">
@@ -116,9 +116,9 @@ export default function ProjectsShowcase() {
             <ProjectCard key={project.slug} project={project} />
           ))}
         </div>
-
+        <div className="mt-20" />
         {/* Progress */}
-        <div className="mx-6 mt-12 flex items-center gap-4 md:mx-10 lg:absolute lg:bottom-10 lg:left-14 lg:right-14 lg:mx-0 lg:mt-0">
+        <div className="mx-6 flex items-center gap-4 md:mx-10 lg:absolute lg:bottom-10 lg:left-14 lg:right-14 lg:mx-0 lg:mt-0">
           <span className="text-[10px] tracking-[0.2em] text-[var(--muted)]">
             01
           </span>

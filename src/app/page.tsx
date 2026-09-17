@@ -1,4 +1,3 @@
-import Navbar from "@/components/layout/Navbar";
 import Hero from "@/components/home/Hero";
 import Introduction from "@/components/home/Introduction";
 import FeaturedProject from "@/components/home/FeaturedProject";
@@ -9,7 +8,6 @@ import ContactCTA from "@/components/home/ContactCTA";
 export default function Home() {
   return (
     <main>
-      <Navbar />
       <Hero />
       <Introduction />
       <FeaturedProject />

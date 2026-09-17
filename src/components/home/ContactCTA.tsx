@@ -7,7 +7,7 @@ import { ArrowUpRight } from "lucide-react";
 
 export default function ContactCTA() {
   return (
-    <section className="bg-[#1c1c1a] px-6 py-24 text-white md:px-10 md:py-32 lg:px-14 lg:py-28">
+    <section className="bg-[#1c1c1a] px-6 py-24 text-white md:px-10 md:py-32 lg:px-14 lg:py-20">
       <div className="mx-auto max-w-[1500px]">
         {/* Top label */}
         <motion.div
@@ -70,7 +70,7 @@ export default function ContactCTA() {
             >
               <Link
                 href="/contact"
-                className="group flex w-full max-w-xl items-center justify-between"
+                className="group flex w-full max-w-xl items-center gap-5"
               >
                 <span className="text-sm uppercase tracking-[0.2em]">
                   Start a conversation
@@ -98,7 +98,7 @@ export default function ContactCTA() {
             className="relative aspect-[4/5] overflow-hidden md:aspect-[4/3] lg:aspect-[4/5]"
           >
             <Image
-              src="/images/projects/pearl/hero.jpg"
+              src="/images/projects/ember/hero.png"
               alt="Belmont residential development"
               fill
               sizes="(max-width: 1024px) 100vw, 40vw"
@@ -117,36 +117,6 @@ export default function ContactCTA() {
             </div>
           </motion.div>
         </div>
-
-        {/* Footer information */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="mt-24 grid gap-8 border-t border-white/10 pt-8 text-sm text-white/40 md:grid-cols-3"
-        >
-          <div>
-            <span className="mb-2 block text-[10px] uppercase tracking-[0.2em] text-white/25">
-              Location
-            </span>
-            Pune, Maharashtra
-          </div>
-
-          <div>
-            <span className="mb-2 block text-[10px] uppercase tracking-[0.2em] text-white/25">
-              Email
-            </span>
-            hello@belmontgroup.in
-          </div>
-
-          <div className="md:text-right">
-            <span className="mb-2 block text-[10px] uppercase tracking-[0.2em] text-white/25">
-              Belmont Group
-            </span>
-            Building spaces worth coming home to.
-          </div>
-        </motion.div>
       </div>
     </section>
   );

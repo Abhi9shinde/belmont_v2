@@ -25,9 +25,7 @@ export default function FeaturedProject() {
             </span>
           </motion.div>
 
-          <span className="text-xs tracking-[0.2em] text-white/40">
-            01 / 03
-          </span>
+          <span className="text-xs tracking-[0.2em] text-white/40">PEARL</span>
         </div>
 
         {/* IMAGE */}

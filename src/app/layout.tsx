@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Manrope, DM_Serif_Display } from "next/font/google";
 import "./globals.css";
+import SiteFrame from "@/components/layout/SiteFrame";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -32,7 +35,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${manrope.variable} ${dmSerif.variable}`}>
-        {children}
+        <SiteFrame>
+          <Navbar />
+          {children}
+          <Footer />
+        </SiteFrame>
       </body>
     </html>
   );

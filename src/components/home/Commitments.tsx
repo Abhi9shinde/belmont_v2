@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState } from "react";
 
 const commitments = [
   {
@@ -43,23 +42,29 @@ const commitments = [
 ];
 
 export default function Commitment() {
-  const [active, setActive] = useState(0);
-
   return (
-    <section className="bg-[var(--background)] px-6 py-28 text-[var(--foreground)] md:px-10 md:py-36 lg:px-14 lg:py-44">
-      <div className="mx-auto max-w-[1500px]">
-        {/* INTRO */}
-        <div className="grid gap-16 lg:grid-cols-[0.8fr_1.2fr] lg:gap-24">
+    <section className="relative overflow-hidden bg-[var(--background)] px-6 py-18 text-[var(--foreground)] md:px-10 md:py-30 lg:px-14 lg:py-38">
+      {/* Subtle architectural grid */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute left-[8%] top-0 h-full w-px bg-[var(--foreground)]/[0.035]" />
+        <div className="absolute left-1/2 top-0 h-full w-px bg-[var(--foreground)]/[0.025]" />
+        <div className="absolute right-[8%] top-0 h-full w-px bg-[var(--foreground)]/[0.035]" />
+      </div>
+
+      <div className="relative mx-auto max-w-[1500px]">
+        {/* HEADER */}
+        <div className="grid gap-12 lg:grid-cols-[0.7fr_1.3fr] lg:gap-24">
+          {/* LEFT */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.8 }}
+            viewport={{ once: true, amount: 0.5 }}
             transition={{
               duration: 0.8,
               ease: [0.22, 1, 0.36, 1],
             }}
           >
-            <div className="flex font-medium items-center gap-4">
+            <div className="flex items-center gap-4">
               <span className="h-px w-10 bg-[var(--foreground)]/30" />
 
               <span className="text-xs font-medium uppercase tracking-[0.3em] text-[var(--muted)]">
@@ -67,101 +72,133 @@ export default function Commitment() {
               </span>
             </div>
 
-            <p className="mt-8 max-w-sm text-lg leading-7 text-[var(--muted)]">
-              Six principles that shape the way Belmont approaches every
-              development and every relationship.
-            </p>
+            <div className="mt-10 hidden lg:block">
+              <span className="text-[9px] uppercase tracking-[0.3em] text-[var(--muted)]">
+                06 Principles
+              </span>
+
+              <div className="mt-5 h-px w-28 bg-[var(--border)]" />
+
+              <p className="mt-6 max-w-xs text-sm leading-7 text-[var(--muted)]">
+                Six principles that shape the way Belmont approaches every
+                development and every relationship.
+              </p>
+            </div>
           </motion.div>
 
+          {/* RIGHT */}
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 35 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.7 }}
+            viewport={{ once: true, amount: 0.5 }}
             transition={{
               duration: 1,
               ease: [0.22, 1, 0.36, 1],
             }}
           >
             <h2 className="max-w-5xl font-[var(--font-display)] text-5xl leading-[0.95] tracking-[-0.035em] md:text-7xl lg:text-[6.5rem]">
-              Building isn't only about what stands today.
-              <span className="text-[var(--muted)]">
-                {" "}
-                It's about what continues to matter tomorrow.
-              </span>
+              Building isn't only
+              <br />
+              about what stands today.
             </h2>
+
+            <p className="mt-8 max-w-3xl font-[var(--font-display)] text-3xl leading-[1.05] tracking-[-0.025em] text-[var(--muted)] md:text-4xl lg:text-5xl">
+              It's about what continues
+              <br className="hidden md:block" />
+              to matter tomorrow.
+            </p>
           </motion.div>
         </div>
 
-        {/* COMMITMENTS */}
-        <div className="mt-24 border-t border-[var(--border)] md:mt-32">
-          {commitments.map((item, index) => {
-            const isActive = active === index;
-
-            return (
-              <motion.div
-                key={item.number}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{
-                  once: true,
-                  amount: 0.7,
-                }}
-                transition={{
-                  duration: 0.7,
-                  delay: index * 0.05,
-                }}
-                onMouseEnter={() => setActive(index)}
-                className="border-b border-[var(--border)]"
-              >
-                <button
-                  type="button"
-                  onClick={() => setActive(index)}
-                  className="grid w-full grid-cols-[45px_1fr_auto] items-start gap-5 py-7 text-left md:grid-cols-[70px_1fr_100px] md:py-9"
-                >
-                  <span className="pt-1 text-xs tracking-[0.2em] text-[var(--muted)]">
-                    {item.number}
-                  </span>
-
-                  <div>
-                    <h3
-                      className={`font-[var(--font-display)] text-2xl tracking-[-0.02em] transition-colors duration-500 md:text-4xl ${
-                        isActive
-                          ? "text-[var(--foreground)]"
-                          : "text-[var(--foreground)]/45"
-                      }`}
-                    >
-                      {item.title}
-                    </h3>
-
-                    <motion.div
-                      initial={false}
-                      animate={{
-                        height: isActive ? "auto" : 0,
-                        opacity: isActive ? 1 : 0,
-                      }}
-                      className="overflow-hidden"
-                    >
-                      <p className="max-w-xl pt-4 text-sm leading-7 text-[var(--muted)] md:text-base">
-                        {item.description}
-                      </p>
-                    </motion.div>
-                  </div>
-
-                  <span
-                    className={`pt-1 text-xs transition-colors duration-500 ${
-                      isActive
-                        ? "text-[var(--foreground)]"
-                        : "text-[var(--muted)]"
-                    }`}
-                  >
-                    {isActive ? "—" : "+"}
-                  </span>
-                </button>
-              </motion.div>
-            );
-          })}
+        {/* COMMITMENT GRID */}
+        <div className="mt-24 md:mt-32 lg:mt-40">
+          <div className="grid border-t border-[var(--border)] md:grid-cols-2">
+            {commitments.map((item, index) => (
+              <CommitmentCard key={item.number} item={item} index={index} />
+            ))}
+          </div>
         </div>
+
+        {/* FOOTER MARKER */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1 }}
+          className="mt-16 flex items-center gap-4"
+        >
+          <span className="h-px w-12 bg-[var(--foreground)]/25" />
+
+          <span className="text-[9px] uppercase tracking-[0.3em] text-[var(--muted)]">
+            Belmont Group · Pune
+          </span>
+
+          <span className="h-px flex-1 bg-[var(--border)]" />
+        </motion.div>
       </div>
     </section>
+  );
+}
+
+function CommitmentCard({
+  item,
+  index,
+}: {
+  item: (typeof commitments)[number];
+  index: number;
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 25 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.25 }}
+      transition={{
+        duration: 0.7,
+        delay: index * 0.06,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+      className={`
+        group relative border-b border-[var(--border)]
+        p-7
+        transition-colors duration-500
+        md:p-10
+        lg:p-14
+        ${index % 2 === 0 ? "md:border-r" : ""}
+      `}
+    >
+      {/* Number + line */}
+      <div className="flex items-center gap-4">
+        <span className="text-[10px] tracking-[0.25em] text-[var(--muted)] transition-colors duration-500 group-hover:text-[var(--foreground)]">
+          {item.number}
+        </span>
+
+        <span className="h-px w-8 bg-[var(--border)] transition-all duration-700 group-hover:w-16 group-hover:bg-[var(--foreground)]/40" />
+
+        <span className="ml-auto text-[9px] uppercase tracking-[0.25em] text-[var(--muted)]">
+          Principle
+        </span>
+      </div>
+
+      {/* Title */}
+      <h3 className="mt-14 max-w-lg font-[var(--font-display)] text-4xl leading-[0.98] tracking-[-0.03em] text-[var(--foreground)]/50 transition-all duration-700 group-hover:translate-x-1 group-hover:text-[var(--foreground)] md:text-5xl lg:text-6xl">
+        {item.title}
+      </h3>
+
+      {/* Description */}
+      <p className="mt-7 max-w-md text-sm leading-7 text-[var(--muted)] transition-colors duration-700 group-hover:text-[var(--foreground)]/65 md:text-base">
+        {item.description}
+      </p>
+
+      {/* Bottom marker */}
+      <div className="mt-12 flex items-center justify-between">
+        <span className="text-[9px] uppercase tracking-[0.3em] text-[var(--muted)]">
+          Belmont Group
+        </span>
+
+        <span className="flex h-8 w-8 items-center justify-center rounded-full border border-[var(--border)] text-xs text-[var(--muted)] transition-all duration-500 group-hover:border-[var(--foreground)]/40 group-hover:text-[var(--foreground)]">
+          ↗
+        </span>
+      </div>
+    </motion.div>
   );
 }

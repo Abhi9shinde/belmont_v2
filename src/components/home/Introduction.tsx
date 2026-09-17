@@ -46,7 +46,7 @@ export default function Introduction() {
     <section className="bg-[var(--background)] text-[var(--foreground)]">
       <div className="mx-auto max-w-[1500px] px-6 md:px-10 lg:px-14">
         {/* SECTION INTRO */}
-        <div className="min-h-[100svh] pt-20 md:py-30 lg:py-28">
+        <div className="pt-20 md:py-30 lg:py-28">
           {/* Label */}
           <motion.div
             initial="hidden"
@@ -90,7 +90,7 @@ export default function Introduction() {
               amount: 0.8,
             }}
             variants={reveal}
-            className="mt-16 ml-auto max-w-2xl md:mt-24"
+            className="2 ml-auto max-w-2xl md:mt-16"
           >
             <p className="text-xl leading-relaxed text-[var(--muted)] md:text-2xl lg:text-3xl">
               It should give you space to grow, moments to share, and a sense of
@@ -113,7 +113,7 @@ export default function Introduction() {
             }}
             viewport={{
               once: true,
-              amount: 0.7,
+              amount: 0.2,
             }}
             transition={{
               duration: 1.1,
